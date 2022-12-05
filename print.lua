@@ -358,7 +358,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 				TeamCheck = true,
 				AliveCheck = true,
 				WallCheck = false, -- Laggy
-				Sensitivity = 0.25, -- Animation length (in seconds) before fully locking onto target
+				Sensitivity = 0.35, -- Animation length (in seconds) before fully locking onto target
 				ThirdPerson = false, -- Uses mousemoverel instead of CFrame to support locking in third person (could be choppy)
 				ThirdPersonSensitivity = 3, -- Boundary: 0.1 - 5
 				TriggerKey = "MouseButton2",
@@ -644,7 +644,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					TeamCheck = true,
 					AliveCheck = true,
 					WallCheck = false,
-					Sensitivity = 0.25, -- Animation length (in seconds) before fully locking onto target
+					Sensitivity = 0.35, -- Animation length (in seconds) before fully locking onto target
 					ThirdPerson = false,
 					ThirdPersonSensitivity = 3,
 					TriggerKey = "MouseButton2",
