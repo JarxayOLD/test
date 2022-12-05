@@ -439,6 +439,8 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 		end
 
 		esp()
+	 	skeelesp()
+			
 	end)
 end
 coroutine.wrap(NJVPQ_fake_script)()
