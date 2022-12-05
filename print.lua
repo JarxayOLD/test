@@ -154,7 +154,7 @@ local function ZVKFYJQ_fake_script() -- BlaxinatorCheatLegit.LocalScript
 	local script = Instance.new('LocalScript', BlaxinatorCheatLegit)
 
 	local uis = game:GetService("UserInputService")
-	
+
 	uis.InputBegan:Connect(function(input,gameProccesedEvent)
 		if input.KeyCode == Enum.KeyCode.RightShift then
 			script.Parent.Parent.BlaxinatorCheatLegit.Enabled = not script.Parent.Parent.BlaxinatorCheatLegit.Enabled
@@ -173,14 +173,14 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 			--Callback here
 		})
 		local function esp()
-	
+
 			assert(Drawing, "missing dependency: drawing");
-	
+
 			-- services
 			local run_service = game:GetService("RunService");
 			local players = game:GetService("Players");
 			local workspace = game:GetService("Workspace");
-	
+
 			-- variables
 			local camera = workspace.CurrentCamera;
 			local get_pivot = workspace.GetPivot;
@@ -188,7 +188,7 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 			local viewport_size = camera.ViewportSize;
 			local localplayer = players.LocalPlayer;
 			local cache = {};
-	
+
 			-- locals
 			local new_drawing = Drawing.new;
 			local new_vector2 = Vector2.new;
@@ -196,41 +196,41 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 			local rad = math.rad;
 			local tan = math.tan;
 			local floor = math.floor;
-	
+
 			-- functions
 			local function create_esp(player)
 				local esp = {};
-	
+
 				esp.box = new_drawing("Square", true);
 				esp.box.Color = new_color3(0,255,25);
 				esp.box.Thickness = 0.8;
 				esp.box.Filled = false;
-	
+
 				esp.tracer = new_drawing("Line", true);
 				esp.tracer.Color = new_color3(0,255,255);
 				esp.tracer.Thickness = 0.5;
-	
+
 				esp.name = new_drawing("Text", true);
 				esp.name.Color = new_color3(0,255,255);
 				esp.name.Size = 15;
 				esp.name.Center = true;
-	
+
 				esp.distance = new_drawing("Text", true);
 				esp.distance.Color = new_color3(0,255,255);
 				esp.distance.Size = 15;
 				esp.distance.Center = true;
-	
+
 				cache[player] = esp;
 			end
-	
+
 			local function remove_esp(player)
 				for _, drawing in next, cache[player] do
 					drawing:Remove();
 				end
-	
+
 				cache[player] = nil;
 			end
-	
+
 			local function update_esp()
 				for player, esp in next, cache do
 					local character = player and player.Character;
@@ -238,30 +238,30 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 						if player.Character.Humanoid.Health > 1 then
 							local cframe = get_pivot(character);
 							local position, visible = wtvp(camera, cframe.Position);
-	
+
 							esp.box.Visible = visible;
 							esp.tracer.Visible = visible;
 							esp.name.Visible = visible;
 							esp.distance.Visible = visible;
-	
+
 							if visible then
 								local scale_factor = 1 / (position.Z * tan(rad(camera.FieldOfView * 0.5)) * 2) * 100;
 								local width, height = floor(35 * scale_factor), floor(50 * scale_factor);
 								local x, y = floor(position.X), floor(position.Y);
-	
+
 								esp.box.Size = new_vector2(width, height);
 								esp.box.Position = new_vector2(floor(x - width * 0.5), floor(y - height * 0.5));
-	
+
 								esp.tracer.From = new_vector2(floor(viewport_size.X * 0.5), floor(viewport_size.Y * 0.5));
 								esp.tracer.To = new_vector2(x, floor(y + height * 0.5));
-	
+
 								esp.name.Text = player.Name;
 								esp.name.Position = new_vector2(x, floor(y - height * 0.5 - esp.name.TextBounds.Y));
-	
+
 								esp.distance.Text = "["..floor(position.Z) .. "]";
 								esp.distance.Position = new_vector2(x, floor(y + height * 0.5));
 							end
-	
+
 						else if player.Character.Humanoid.Health <= 1 then
 								esp.box.Visible = false;
 								esp.tracer.Visible = false;
@@ -277,25 +277,25 @@ local function NJVPQ_fake_script() -- TextButton.LocalScript
 					end
 				end
 			end
-	
+
 			-- connections
 			players.PlayerAdded:Connect(create_esp);
 			players.PlayerRemoving:Connect(remove_esp);
 			run_service.RenderStepped:Connect(update_esp);
-	
+
 			for _, player in next, players:GetPlayers() do
 				if player ~= localplayer then
 					create_esp(player);
 				end
 			end
-			
-			
-			
-			
-			
+
+
+
+
+
 
 		end
-		
+
 		esp()
 	end)
 end
@@ -312,18 +312,18 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 		})
 		local function ambot()
 			--// Preventing Multiple Processes
-	
+
 			pcall(function()
 				getgenv().Aimbot.Functions:Exit()
 			end)
-	
+
 			--// Environment
-	
+
 			getgenv().Aimbot = {}
 			local Environment = getgenv().Aimbot
-	
+
 			--// Services
-	
+
 			local RunService = game:GetService("RunService")
 			local UserInputService = game:GetService("UserInputService")
 			local HttpService = game:GetService("HttpService")
@@ -331,9 +331,9 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 			local StarterGui = game:GetService("StarterGui")
 			local Players = game:GetService("Players")
 			local Camera = game:GetService("Workspace").CurrentCamera
-	
+
 			--// Variables
-	
+
 			local LocalPlayer = Players.LocalPlayer
 			local Title = "Exunys Developer"
 			local FileNames = {"Aimbot", "Configuration.json", "Drawing.json"}
@@ -342,14 +342,14 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 			local Running = false
 			local Animation = nil
 			local ServiceConnections = {RenderSteppedConnection = nil, InputBeganConnection = nil, InputEndedConnection = nil, TypingStartedConnection = nil, TypingEndedConnection = nil}
-	
+
 			--// Support Functions
-	
+
 			local mousemoverel = mousemoverel or (Input and Input.MouseMove)
 			local queueonteleport = syn.queue_on_teleport or queue_on_teleport
-	
+
 			--// Script Settings
-	
+
 			Environment.Settings = {
 				SendNotifications = false,
 				SaveSettings = false, -- Re-execute upon changing
@@ -365,7 +365,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 				Toggle = false,
 				LockPart = "HumanoidRootPart" -- Body part to lock on
 			}
-	
+
 			Environment.FOVSettings = {
 				Enabled = true,
 				Visible = true,
@@ -377,36 +377,36 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 				Thickness = 1,
 				Filled = false
 			}
-	
+
 			Environment.FOVCircle = Drawing.new("Circle")
 			Environment.Locked = nil
-	
+
 			--// Core Functions
-	
+
 			local function Encode(Table)
 				if Table and type(Table) == "table" then
 					local EncodedTable = HttpService:JSONEncode(Table)
-	
+
 					return EncodedTable
 				end
 			end
-	
+
 			local function Decode(String)
 				if String and type(String) == "string" then
 					local DecodedTable = HttpService:JSONDecode(String)
-	
+
 					return DecodedTable
 				end
 			end
-	
+
 			local function GetColor(Color)
 				local R = tonumber(string.match(Color, "([%d]+)[%s]*,[%s]*[%d]+[%s]*,[%s]*[%d]+"))
 				local G = tonumber(string.match(Color, "[%d]+[%s]*,[%s]*([%d]+)[%s]*,[%s]*[%d]+"))
 				local B = tonumber(string.match(Color, "[%d]+[%s]*,[%s]*[%d]+[%s]*,[%s]*([%d]+)"))
-	
+
 				return Color3.fromRGB(R, G, B)
 			end
-	
+
 			local function SendNotification(TitleArg, DescriptionArg, DurationArg)
 				if Environment.Settings.SendNotifications then
 					StarterGui:SetCore("SendNotification", {
@@ -416,21 +416,21 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					})
 				end
 			end
-	
+
 			--// Functions
-	
+
 			local function SaveSettings()
 				if Environment.Settings.SaveSettings then
 					if isfile(Title.."/"..FileNames[1].."/"..FileNames[2]) then
 						writefile(Title.."/"..FileNames[1].."/"..FileNames[2], Encode(Environment.Settings))
 					end
-	
+
 					if isfile(Title.."/"..FileNames[1].."/"..FileNames[3]) then
 						writefile(Title.."/"..FileNames[1].."/"..FileNames[3], Encode(Environment.FOVSettings))
 					end
 				end
 			end
-	
+
 			local function GetClosestPlayer()
 				if Environment.Locked == nil then
 					if Environment.FOVSettings.Enabled then
@@ -438,17 +438,17 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					else
 						RequiredDistance = math.huge
 					end
-	
+
 					for _, v in next, Players:GetPlayers() do
 						if v ~= LocalPlayer then
 							if v.Character and v.Character[Environment.Settings.LockPart] then
 								if Environment.Settings.TeamCheck and v.Team == LocalPlayer.Team then continue end
 								if Environment.Settings.AliveCheck and v.Character.Humanoid.Health <= 0 then continue end
 								if Environment.Settings.WallCheck and #(Camera:GetPartsObscuringTarget({v.Character[Environment.Settings.LockPart].Position}, v.Character:GetDescendants())) > 0 then continue end
-	
+
 								local Vector, OnScreen = Camera:WorldToViewportPoint(v.Character[Environment.Settings.LockPart].Position)
 								local Distance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(Vector.X, Vector.Y)).Magnitude
-	
+
 								if Distance < RequiredDistance and OnScreen then
 									RequiredDistance = Distance
 									Environment.Locked = v
@@ -462,40 +462,40 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					Environment.FOVCircle.Color = GetColor(Environment.FOVSettings.Color)
 				end
 			end
-	
+
 			--// Typing Check
-	
+
 			ServiceConnections.TypingStartedConnection = UserInputService.TextBoxFocused:Connect(function()
 				Typing = true
 			end)
-	
+
 			ServiceConnections.TypingEndedConnection = UserInputService.TextBoxFocusReleased:Connect(function()
 				Typing = false
 			end)
-	
+
 			--// Create, Save & Load Settings
-	
+
 			if Environment.Settings.SaveSettings then
 				if not isfolder(Title) then
 					makefolder(Title)
 				end
-	
+
 				if not isfolder(Title.."/"..FileNames[1]) then
 					makefolder(Title.."/"..FileNames[1])
 				end
-	
+
 				if not isfile(Title.."/"..FileNames[1].."/"..FileNames[2]) then
 					writefile(Title.."/"..FileNames[1].."/"..FileNames[2], Encode(Environment.Settings))
 				else
 					Environment.Settings = Decode(readfile(Title.."/"..FileNames[1].."/"..FileNames[2]))
 				end
-	
+
 				if not isfile(Title.."/"..FileNames[1].."/"..FileNames[3]) then
 					writefile(Title.."/"..FileNames[1].."/"..FileNames[3], Encode(Environment.FOVSettings))
 				else
 					Environment.Visuals = Decode(readfile(Title.."/"..FileNames[1].."/"..FileNames[3]))
 				end
-	
+
 				coroutine.wrap(function()
 					while wait(10) do
 						SaveSettings()
@@ -506,7 +506,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					delfolder(Title)
 				end
 			end
-	
+
 			local function Load()
 				ServiceConnections.RenderSteppedConnection = RunService.RenderStepped:Connect(function()
 					if Environment.FOVSettings.Enabled and Environment.Settings.Enabled then
@@ -521,13 +521,13 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					else
 						Environment.FOVCircle.Visible = false
 					end
-	
+
 					if Running and Environment.Settings.Enabled then
 						GetClosestPlayer()
-	
+
 						if Environment.Settings.ThirdPerson then
 							Environment.Settings.ThirdPersonSensitivity = math.clamp(Environment.Settings.ThirdPersonSensitivity, 0.1, 5)
-	
+
 							local Vector = Camera:WorldToViewportPoint(Environment.Locked.Character[Environment.Settings.LockPart].Position)
 							mousemoverel((Vector.X - UserInputService:GetMouseLocation().X) * Environment.Settings.ThirdPersonSensitivity, (Vector.Y - UserInputService:GetMouseLocation().Y) * Environment.Settings.ThirdPersonSensitivity)
 						else
@@ -538,18 +538,18 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 								Camera.CFrame = CFrame.new(Camera.CFrame.Position, Environment.Locked.Character[Environment.Settings.LockPart].Position)
 							end
 						end
-	
+
 						Environment.FOVCircle.Color = GetColor(Environment.FOVSettings.LockedColor)
 					end
 				end)
-	
+
 				ServiceConnections.InputBeganConnection = UserInputService.InputBegan:Connect(function(Input)
 					if not Typing then
 						pcall(function()
 							if Input.KeyCode == Enum.KeyCode[Environment.Settings.TriggerKey] then
 								if Environment.Settings.Toggle then
 									Running = not Running
-	
+
 									if not Running then
 										Environment.Locked = nil
 										Animation:Cancel()
@@ -560,12 +560,12 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 								end
 							end
 						end)
-	
+
 						pcall(function()
 							if Input.UserInputType == Enum.UserInputType[Environment.Settings.TriggerKey] then
 								if Environment.Settings.Toggle then
 									Running = not Running
-	
+
 									if not Running then
 										Environment.Locked = nil
 										Animation:Cancel()
@@ -578,7 +578,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 						end)
 					end
 				end)
-	
+
 				ServiceConnections.InputEndedConnection = UserInputService.InputEnded:Connect(function(Input)
 					if not Typing then
 						pcall(function()
@@ -591,7 +591,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 								end
 							end
 						end)
-	
+
 						pcall(function()
 							if Input.UserInputType == Enum.UserInputType[Environment.Settings.TriggerKey] then
 								if not Environment.Settings.Toggle then
@@ -605,36 +605,36 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					end
 				end)
 			end
-	
+
 			--// Functions
-	
+
 			Environment.Functions = {}
-	
+
 			function Environment.Functions:Exit()
 				SaveSettings()
-	
+
 				for _, v in next, ServiceConnections do
 					v:Disconnect()
 				end
-	
+
 				Environment.FOVCircle:Remove()
-	
+
 				getgenv().Aimbot.Functions = nil
 				getgenv().Aimbot = nil
 			end
-	
+
 			function Environment.Functions:Restart()
 				SaveSettings()
-	
+
 				for _, v in next, ServiceConnections do
 					v:Disconnect()
 				end
-	
+
 				Environment.FOVCircle:Remove()
-	
+
 				Load()
 			end
-	
+
 			function Environment.Functions:ResetSettings()
 				Environment.Settings = {
 					SendNotifications = false,
@@ -651,7 +651,7 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					Toggle = false,
 					LockPart = "HumanoidRootPart" -- Body part to lock on
 				}
-	
+
 				Environment.FOVSettings = {
 					Enabled = true,
 					Visible = true,
@@ -663,24 +663,24 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					Thickness = 1,
 					Filled = false
 				}
-	
+
 				SaveSettings()
-	
+
 				for _, v in next, ServiceConnections do
 					v:Disconnect()
 				end
-	
+
 				Load()
 			end
-	
+
 			--// Support Check
-	
+
 			if not Drawing or not writefile or not makefolder then
 				SendNotification(Title, "Your exploit does not support this script", 3); return
 			end
-	
+
 			--// Reload On Teleport
-	
+
 			if Environment.Settings.ReloadOnTeleport then
 				if queueonteleport then
 					queueonteleport(game:HttpGet("https://raw.githubusercontent.com/Exunys/Aimbot-V2/main/Resources/Scripts/Main.lua"))
@@ -688,14 +688,14 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 					SendNotification(Title, "Your exploit does not support \"syn.queue_on_teleport()\"")
 				end
 			end
-	
+
 			--// Load
-	
+
 			Load(); SendNotification(Title, "Aimbot script successfully loaded! Check the GitHub page on how to configure the script.", 5)
-			
-			
-			
-			
+
+
+
+
 
 		end
 		ambot()
@@ -703,79 +703,79 @@ local function RLCANC_fake_script() -- TextButton_2.LocalScript
 end
 coroutine.wrap(RLCANC_fake_script)()
 local function DBCCUN_fake_script() -- TextButton_3.LocalScript 
-	
+
 	local script = Instance.new('LocalScript', TextButton_3)
-	
-	
-script.Parent.MouseButton1Up:Connect(function()
-
-	local uis = game:GetService("UserInputService")
-
-	local istgg = false
-
-	uis.InputBegan:Connect(function(input,gameProccesedEvent)
-		if input.KeyCode == Enum.KeyCode.LeftShift then
-			istgg = true
-			print("on")
 
 
-			CoreGui:SetCore("SendNotification", {
-				Title = "cyanide";
-				Text = "[Triggerbot] Enabled";
-				Duration = 0.1;
-				--Callback here
-			})
-			--script.Parent.Parent.Parent.Parent.ttstatus.Text = "on"
-		end
-	end)
+	script.Parent.MouseButton1Up:Connect(function()
+
+		local uis = game:GetService("UserInputService")
+
+		local istgg = false
+
+		uis.InputBegan:Connect(function(input,gameProccesedEvent)
+			if input.KeyCode == Enum.KeyCode.LeftShift then
+				istgg = true
+				print("on")
 
 
-
-
-
-	uis.InputEnded:Connect(function(input,gameProccesedEvent)
-		if input.KeyCode == Enum.KeyCode.LeftShift then
-			istgg = false
-			print("off")
-			CoreGui:SetCore("SendNotification", {
-				Title = "cyanide";
-				Text = "[Triggerbot] Disabled";
-				Duration = 0.1;
-				--Callback here
-			})
-			--script.Parent.Parent.Parent.Parent.ttstatus.Text = "off"
-		end
-	end)
-
-
-	local player = game:GetService("Players").LocalPlayer
-	local mouse = player:GetMouse()
-
-		game:GetService("RunService").RenderStepped:Connect(function()
-			if istgg == true then
-				if mouse.Target.Parent:FindFirstChild("Humanoid") and mouse.Target.Parent.Name ~= player.Name then
-					if istgg == true then
-						local plaer = game.Players:GetPlayerFromCharacter(mouse.Target.Parent)
-						if istgg == true then
-							if plaer.TeamColor ~= player.TeamColor then
-								if istgg == true then
-									print("hit")
-									mouse1press()
-									wait()
-									mouse1release()
-								end	
-							end
-
-
-						end
-					end
-				end
+				CoreGui:SetCore("SendNotification", {
+					Title = "cyanide";
+					Text = "[Triggerbot] Enabled";
+					Duration = 0.1;
+					--Callback here
+				})
+				--script.Parent.Parent.Parent.Parent.ttstatus.Text = "on"
 			end
-
 		end)
 
 
-end)
+
+
+
+		uis.InputEnded:Connect(function(input,gameProccesedEvent)
+			if input.KeyCode == Enum.KeyCode.LeftShift then
+				istgg = false
+				print("off")
+				CoreGui:SetCore("SendNotification", {
+					Title = "cyanide";
+					Text = "[Triggerbot] Disabled";
+					Duration = 0.1;
+					--Callback here
+				})
+				--script.Parent.Parent.Parent.Parent.ttstatus.Text = "off"
+			end
+		end)
+
+
+		local player = game:GetService("Players").LocalPlayer
+		local mouse = player:GetMouse()
+
+			game:GetService("RunService").RenderStepped:Connect(function()
+				if istgg == true then
+					if mouse.Target.Parent:FindFirstChild("Humanoid") and mouse.Target.Parent.Name ~= player.Name then
+						if istgg == true then
+							local plaer = game.Players:GetPlayerFromCharacter(mouse.Target.Parent)
+							if istgg == true then
+								if plaer.TeamColor ~= player.TeamColor then
+									if istgg == true then
+										print("hit")
+										mouse1press()
+										wait()
+										mouse1release()
+									end	
+								end
+
+
+							end
+						end
+					end
+				end
+
+			end)
+
+
+	end)
 end
 coroutine.wrap(DBCCUN_fake_script)()
 local function OTTER_fake_script() -- MainMenu.LocalScript 
