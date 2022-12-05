@@ -750,7 +750,7 @@ script.Parent.MouseButton1Up:Connect(function()
 
 	local player = game:GetService("Players").LocalPlayer
 	local mouse = player:GetMouse()
-	if istgg == true then
+
 		game:GetService("RunService").RenderStepped:Connect(function()
 			if istgg == true then
 				if mouse.Target.Parent:FindFirstChild("Humanoid") and mouse.Target.Parent.Name ~= player.Name then
@@ -773,7 +773,7 @@ script.Parent.MouseButton1Up:Connect(function()
 			end
 
 		end)
-	end
+
 
 end)
 end
