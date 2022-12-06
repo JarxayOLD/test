@@ -2,6 +2,8 @@
 -- Version: 3.2
 
 -- Instances:
+getgenv().text = "BLAXINATOR"
+loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/gamesensewatermark.lua")()
 
 local ExecutorUsing = is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or secure_load and "Sentinel" or KRNL_LOADED and "Krnl" or SONA_LOADED and "Sona" or "WTF?"
 local HttpService = game:GetService("HttpService")
